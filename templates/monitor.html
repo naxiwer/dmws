@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% block page-content %}
+
+Monitor Page
+<div class="row well">
+{% if name_list %}
+	<table class="table table-striped table-bordered table-hover datatable" >
+	<thead><tr class="info">
+		<th>邮箱名</th>
+		<th>序号</th>
+		<th>昵称</th>
+		<th>姓名</th>
+	</tr></thead>
+	<tbody>
+	{% for k,v in name_list.items %}
+	{% if forloop.counter|divisibleby:2 %}
+		<tr class="success">
+	{% else %}
+		<tr class="active">
+	{% endif %}
+			<td>{{ k }}</td>
+			{% for i in v %}
+				<td>{{ i }}</td>
+			{% endfor %}
+		</tr> 
+	{% endfor %}
+	</tbody>
+	</table>
+{% else %}
+ 	 找不到数据。
+{% endif %}
+Book List
+    <div class="col-xs-5 col-sm-5 col-md-5 col-lg-5 sidebar">
+    <h1 class="page-header">运维系统快捷链接</h1>
+   	{% if cim_os_list %}
+		<table class="table table-striped table-bordered table-hover datatable">
+		{% for osl in cim_os_list %}
+		<tr>
+			<td> <a href="{{osl.os_url}}" target="_blank">{{osl.os_name}}</a></td>
+		</tr>
+		{% endfor %}
+		</table>
+	{% else %}
+		尚未加入需要公布的监控系统，可以登录<a href="/admin/cim/operationsystem/add">此处</a>添加。
+	{% endif %}
+
+    </div>
+</div>
+{% endblock %}

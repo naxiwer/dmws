@@ -1,0 +1,21 @@
+.messinfo {
+  color: #d9534f;
+}
+.msghead1 {
+	color: #000000;
+	font-weight:bold;
+	font-size:  14px;	
+}
+.msghead2 {
+	color: #0080ff;
+	font-family: 微软雅黑;
+	font-style: italic;
+	font-weight: bold;
+	font-size:  14px;
+}
+.msghead3 {
+	color: #800000;
+	font-family: 微软雅黑;
+	font-weight: bold;
+	font-size:  14px;
+}

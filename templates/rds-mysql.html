@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block page-content %}
+<div class="container-fluid well">
+	<div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 sidebar">
+    	<li class="nav nav-header"><a class="btn btn-primary" href="#" >获取阿里云数据库信息</a></li>
+      	<ul class="nav nav-sidebar">
+        	<li><a href="#">#</a></li>
+      	</ul>
+    </div>
+
+    <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10 main">
+ 		<p>当天检测<br/> </p>
+        查看现有阿里云集群。{{user.username}},
+        <form class="form-async" method="post" action="/rds/s">
+            {% csrf_token %}
+             <input type="hidden" id="do" name="do" value="asyncRdsMySQL" />
+            <button class="btn btn-large btn-primary" type="submit"> 同步阿里云rds for mysql 信息</button>
+        </form>{{ d }}
+
+
+    </div>
+    
+</div>
+
+{% endblock %}

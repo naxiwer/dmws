@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>数据运维工作平台</title>
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <link rel="stylesheet" href="/static/css/bootstrap.css">
+	<link rel="stylesheet" href="/static/css/bootstrap-table.css">
+    <script src="/static/js/jquery.min.js"></script>
+    <script src="/static/js/bootstrap.min.js"></script>
+	<script src="/static/js/bootstrap-table.js"></script>
+</head>
+
+<body>
+
+	<div class="container-fluid well">
+	<nav class="navbar navbar-inverse navbar-static-top">
+	    <div class="container">
+	        <div class="navbar-header">
+	            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+	                <span class="sr-only">欢迎使用</span>
+	                <span class="icon-bar"></span>
+	                <span class="icon-bar"></span>
+	                <span class="icon-bar"></span>
+	            </button>
+	            <a class="navbar-brand" href="/home"><b>运维管理平台</b></a>
+	        </div>
+	        <div id="navbar" class="navbar-collapse collapse">
+	            <ul class="nav navbar-nav">
+	                <li ><a href="/home">主页</a></li>
+ 	                <li class="dropdown">
+	                    <a href="/netimpv" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">网络整改<span class="caret"></span></a>
+	                    <ul class="dropdown-menu" role="menu">
+			                <li><a href="/netimpv">资料上传</a></li>
+			                <li><a href="/netimpv/queryinfo">信息查询</a></li>
+			                <li><a href="/netimpv/querylog">操作日志</a></li>
+	                    </ul>
+	                </li>
+	                <li><a href="/checkBackupFiles">备份检测</a></li>
+				</ul>
+ 	            <ul class="nav navbar-nav navbar-right">
+	                <p>欢迎，{{ user.first_name }}{{ user.last_name }}</p>
+	                <a href="/admin/password_change/" target="_blank">修改密码</a>&nbsp&nbsp|
+	                <a href="/admin" target="_blank">管理</a>&nbsp&nbsp|&nbsp&nbsp
+	                <a href="/login/out">退出</a>
+	            </ul>
+	        </div>
+	    </div>
+	</nav>
+
+
+<div class="container-fluid well">
+欢迎使用 home2
+</div>
+
+		<footer class="footer">
+		    <p class="text-muted" >oms&copy;2016-2017</p>
+		</footer>
+
+</div>
+</body>
+
+<script type="text/javascript">    
+   $(document).ready(function(){
+	$("li").click(function(){
+		$("li").removeClass("active");
+		$(this).addClass("active");		
+	});
+   });
+</script>
+
+</html>

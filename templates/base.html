@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>数据管理平台</title>
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <link rel="stylesheet" href="/static/css/bootstrap.css">
+	<link rel="stylesheet" href="/static/css/bootstrap-table.css">
+    <script src="/static/js/jquery.min.js"></script>
+    <script src="/static/js/bootstrap.min.js"></script>
+	<script src="/static/js/bootstrap-table.js"></script>
+</head>
+
+<body>
+
+	<div class="container-fluid">
+	<nav class="navbar navbar-default navbar-static-top">
+	    <div class="container">
+	        <div class="navbar-header">
+	            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+	                <span class="sr-only">欢迎使用</span>
+	                <span class="icon-bar"></span>
+	                <span class="icon-bar"></span>
+	                <span class="icon-bar"></span>
+	            </button>
+	            <a class="navbar-brand" href="/home"><b>数据管理平台</b></a>
+	        </div>
+	        <div id="navbar" class="navbar-collapse collapse">
+	            <ul class="nav navbar-nav">
+ 	                <li class="dropdown">
+	                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">服务器维护<span class="caret"></span></a>
+	                    <ul class="dropdown-menu" role="menu">
+			                <li><a href="#">主机录入</a></li>
+			                <li><a href="#">IP录入</a></li>
+			                <li role="separator" class="divider"></li>
+			                <li><a href="#">配置主机</a></li>
+	                    </ul>
+	                </li>
+ 	                <li class="dropdown">
+	                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">项目维护<span class="caret"></span></a>
+	                    <ul class="dropdown-menu" role="menu">
+			                <li><a href="#">项目部署</a></li>
+			                <li role="separator" class="divider"></li>
+			                <li><a href="#">项目录入</a></li>
+			                <li><a href="#">架构录入</a></li>
+			                <li role="separator" class="divider"></li>
+			                <li><a href="#">项目查看</a></li>
+	                    </ul>
+	                </li>
+ 	                <li class="dropdown">
+	                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">系统运维<span class="caret"></span></a>
+	                    <ul class="dropdown-menu" role="menu">
+			                <li><a href="#">批量更新服务器</a></li>
+	                    </ul>
+	                </li>
+ 	                <li class="dropdown">
+	                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Web运维<span class="caret"></span></a>
+	                    <ul class="dropdown-menu" role="menu">
+			                <li><a href="#">新项目部署</a></li>
+			                <li role="separator" class="divider"></li>
+			                <li><a href="#">批量更新</a></li>
+	                    </ul>
+	                </li>
+                    <li class="dropdown">
+	                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">DBA操作<span class="caret"></span></a>
+	                    <ul class="dropdown-menu" role="menu">
+			                <li><a href="/rds">数据库一览</a></li>
+			                <li><a href="#">rds主实例配置</a></li>
+			                <li><a href="#">rds只读实例配置</a></li>
+			                <li role="separator" class="divider"></li>
+			                <li><a href="#">创建新库</a></li>
+			                <li><a href="#">账号权限</a></li>
+			                <li><a href="#">白名单控制</a></li>
+			                <li role="separator" class="divider"></li>
+			                <li><a href="#">数据更新</a></li>
+			                <li><a href="#">数据统计</a></li>
+			                <li role="separator" class="divider"></li>
+			                <li><a href="/redis">redis键值管理</a></li>
+			                <li><a href="#">数据统计</a></li>
+			                <li role="separator" class="divider"></li>
+			                <li><a href="#">操作统计</a></li>
+	                    </ul>
+	                </li>
+                    <li class="dropdown">
+	                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">SQL开发助手<span class="caret"></span></a>
+	                    <ul class="dropdown-menu" role="menu">
+			                <li><a href="/sql/checkindex">SQL脚本语法检查</a></li>
+			                <li role="separator" class="divider"></li>
+			                <li><a href="/sql/dml">生产数据更新</a></li>
+			                <li><a href="/sql/query">生产数据统计</a></li>
+			                <li role="separator" class="divider"></li>
+			                <li><a href="/sql/operlog">个人操作日志</a></li>
+	                    </ul>
+	                </li>
+				</ul>
+ 	            <ul class="nav navbar-nav navbar-right">
+	                <p>欢迎您，{{ user.first_name }}{{ user.last_name }}[{{ user.username }}]</p>
+	                <a href="/admin/password_change/" target="_blank">修改密码</a>&nbsp&nbsp|
+	                <a href="/admin" target="_blank">个人维护</a>&nbsp&nbsp|&nbsp&nbsp
+	                <a href="/login/out">退出</a>
+	            </ul>
+	        </div>
+	    </div>
+	</nav>
+
+
+{% block page-content %}
+
+{% endblock %}
+
+	<footer class="footer">
+	    <p class="text-muted" >DMSS(Database Management Sub-System)&copy;2018-2021</p>
+	</footer>
+
+</div>
+</body>
+
+<script type="text/javascript">    
+   $(document).ready(function(){
+	$("li").click(function(){
+		$("li").removeClass("active");
+		$(this).addClass("active");		
+	});
+   });
+</script>
+
+</html>

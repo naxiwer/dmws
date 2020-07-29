@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block page-content %}
+<div class="container-fluid well">
+欢迎使用SQL在线查询。{{user.username}},
+	<div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 sidebar">  
+    	<li class="nav nav-header"><a class="btn btn-primary" href="#" >SQL语法脚本检测</a></li>
+      	<ul class="nav nav-sidebar">
+        	<li><a href="#">SQL语法限制</a></li>
+      	</ul>
+    </div>
+    
+    <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10 main">
+ 		<p>当天检测<br/> </p>
+    	
+    </div>
+    
+</div>
+
+{% endblock %}

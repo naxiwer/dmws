@@ -13,9 +13,21 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+from django.conf.urls import include, url
 from django.contrib import admin
-from django.urls import path
+admin.autodiscover()
+from login import views as homeviews
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    url(r'^admin/', admin.site.urls),
+    url(r'^login/', include('login.urls')),
+#    url(r'sql/', include('sqlonline.urls')),
+#    url(r'rds/', include('rds.urls')),
+#    url(r'redis/', include('redisadmin.urls')),
+    url(r'^$', homeviews.index, name='index'),
+    url(r'^home$', homeviews.home, name='home'),
+    # url(r'^logout$', 'login.views.logout_view', name='logout'),
+    # url(r'^login$','login.views.login_view', name='logcheck'),
+    #     url(r'^checkbackup/', include('ckbackup.urls')),
+    #     url(r'^datavis/', include('datavis.urls')),
 ]

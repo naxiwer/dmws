@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block page-content %}
+<div class="container-fluid well">
+	<div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 sidebar">
+    	<li class="nav nav-header"><a class="btn btn-primary" href="/redis" >获取redis键值情况</a></li>
+
+    </div>
+
+    <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10 main">
+        <form class="form-async" method="post" action="/redis/q">
+            <label></label>
+            <select name="selectRedis">
+              <option value="0">--请选择redis实例--</option>
+              <option value="c1">生产集群 [6679-6681] 公用</option>
+              <option value="c2">生产集群 [6691-6693] 授信</option>
+              <option value="c3">生产集群 [6601-6603] Token|用户|机构|消息</option>
+              <option value="c4">生产集群 [6611-6613] 营销</option>
+              <option value="c5">生产集群 [6621-6648] RTA</option>
+              <option value="r1">生产单点：r-2ze527580e3f1c94</option>
+              <option value="r2">生产单点：r-2ze99e0e37f40de4</option>
+              <option value="r2">生产单点：82187d0245634832</option>
+              <option value="tc1">开发集群 [192.168.161.219:6378-6381 7378-7381] 公用</option>
+              <option value="tc2">测试集群 [192.168.161.217:6378-6381 7378-7381] 第1套公用</option>
+              <option value="tc3">测试集群 [192.168.161.217:6681-6683 7681-7683] 第2套公用</option>
+              <option value="tc4">测试集群 [192.168.46.54:6681-6683 7681-7683] 小x卡</option>
+              <option value="tc5">测试集群 [192.168.46.54:6691-6693 7691-7693] 准生产稳定版</option>
+              <option value="tr1">测试单点 [192.168.161.217:6680] 公用</option>
+            </select>
+            {% csrf_token %}
+            <input type="text" id="do" name="do" size="50" placeholder="键值" value='' required autofocus>
+            <button class="btn btn-large btn-primary" type="submit">查询</button>
+        </form>{{ err }} {{ d }}
+
+    </div>
+    
+</div>
+
+{% endblock %}

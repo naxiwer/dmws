@@ -1,0 +1,99 @@
+<head>
+	<link rel="stylesheet" href="/static/css/datavis.css">
+	<script src="/static/js/datavis.js"></script>
+	<script src="/static/js/echarts.min.js"></script>
+</head>
+
+{% extends 'base.html' %}
+
+{% block page-content %}
+<div class="container-fluid well">
+	<div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 sidebar">  
+            <ul class="nav nav-list">
+              <li class="nav-header">业务数据监控</li>
+              <li class="active"><a href="/datavis">仪表盘</a></li>
+              <li><a href="/datavis/hp">模拟hp</a></li>
+              <li><a href="/datavis/gethp">获取hp</a></li>
+              <li><a href="#">Link</a></li>
+              <li class="nav-header">服务器数据监控</li>
+              <li><a href="#">Link</a></li>
+              <li><a href="#">Link</a></li>
+              <li class="nav-header">Sidebar</li>
+              <li><a href="#">Link</a></li>
+              <li><a href="#">Link</a></li>
+            </ul>
+	</div><!--/.well -->
+
+    <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10 main datavis-main">
+ 		<h1>数据可视化页面</h1>
+
+<div id="main" style="width: 400px;height:300px;" class="col-xs-5 col-sm-5 col-md-5 col-lg-5 main"></div>
+    <script type="text/javascript">
+        // 基于准备好的dom，初始化echarts实例
+        var myChart = echarts.init(document.getElementById('main'));
+
+        // 指定图表的配置项和数据
+        var option = {
+            title: {
+                text: 'ECharts 图表'
+            },
+            tooltip: {},
+            legend: {
+                data:['销量']
+            },
+            xAxis: {
+                data: ["衬衫","羊毛衫","雪纺衫","裤子","高跟鞋","袜子"]
+            },
+            yAxis: {},
+            series: [{
+                name: '销量',
+                type: 'bar',
+                data: [5, 20, 36, 10, 10, 20]
+            }]
+        };
+
+        // 使用刚指定的配置项和数据显示图表。
+        myChart.setOption(option);
+    </script>
+
+<div id="main2" style="width: 400px;height:300px;" class="col-xs-5 col-sm-5 col-md-5 col-lg-5 main"></div>
+    <script type="text/javascript">
+        // 基于准备好的dom，初始化echarts实例
+        var myChart = echarts.init(document.getElementById('main2'));
+
+        // 指定图表的配置项和数据
+        var option = {
+		    series : [
+		        {
+		            name: '访问来源',
+		            type: 'pie',
+		            radius: '55%',
+		            data:[
+		                {value:235, name:'视频广告'},
+		                {value:274, name:'联盟广告'},
+		                {value:310, name:'邮件营销'},
+		                {value:335, name:'直接访问'},
+		                {value:400, name:'搜索引擎'}
+		            ]
+		        }
+		    ]
+		};
+
+        // 使用刚指定的配置项和数据显示图表。
+        myChart.setOption(option);
+    </script>
+  </div>
+  <div class="col-xs-10 col-sm-10 col-md-10 col-lg-10 datavis-main">
+		<h2>读取redis</h2>
+		<h5>(每5秒刷新一次)</h5>
+		<div >所有用户:
+	  <script type="text/javascript">
+		$(function(){
+		  setTimeout(function(){myrequest();},200);  
+		  setInterval(function () { myrequest(); }, 5000);
+		});
+  	  </script>
+  	  </div><div class="span2"><p id="ntfText"></p></div>
+  </div>
+</div>
+{% endblock %}

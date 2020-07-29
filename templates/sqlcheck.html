@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% block page-content %}
+<div class="container-fluid well">
+
+    <form class="form-group" method="post" action="/sql/check">
+        {% csrf_token %}
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 main">
+        <div class="form-group">
+            <label >SQL脚本语法检测：数据库版本</label>
+            <select id="sqlversion1">
+                <option value="mysql55">MySQL5.5</option>
+                <option value="mysql56" selected>MySQL5.6</option>
+                <option value="mysql57">MySQL5.7</option>
+                <option value="mysql8">MySQL8.0</option>
+            </select>
+            <label >（生产环境）</label>
+        </div>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 main media-middle textarea-middle">
+            <tr align="center" valign="middle">
+            <div class="col-xs-5 col-sm-5 col-md-5 col-lg-5 main form-group">
+                    <div>
+                        <textarea class="form-control" rows="20" cols="100"
+                        id="sqlcheckinput" name="sqlcheckinput"  autofocus>{{ sqlinput|default_if_none:"" }}</textarea>
+                    </div>
+            </div>
+            <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 main form-group">
+                    <div> <button type="submit" id="sqlchecksubmit">SQL评估</button></div>
+            </div>
+            <div class="col-xs-5 col-sm-5 col-md-5 col-lg-5 main form-group">
+                    <div>
+                        <textarea class="form-control" rows="20" cols="100"
+                                  id="sqlcheckresult" name="sqlcheckresult">分析SQL：共{{ sqllist|length }}个SQL
+{{ sqllist| default_if_none:""}}
+检测结果：
+{{ checkresult|default_if_none:"" }}</textarea>
+                    </div>
+            </div>
+            </tr>
+        </div>
+    </form>
+    <div>
+        <label >重要说明：</label><br>
+        <label >1、本功能主要用于开发阶段的语句调试、正常运行后更新生产环境数据；</label>
+    </div>
+</div>
+
+{% endblock %}
